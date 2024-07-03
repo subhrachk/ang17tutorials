@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { optionType } from '../../types';
+import { ProductType, optionType } from '../../types';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +16,21 @@ export class ApiService {
 
   get<T>(url : string,options : optionType) : Observable<T> {
     return this.http.get<T>(url,options) as Observable<T>;
+  }
+
+  // Used to make a POST request to the API
+  post<T>(url: string, body: ProductType, options: optionType): Observable<T> {
+    return this.http.post<T>(url, body, options) as Observable<T>;
+  }
+
+  // Used to make a PUT request to the API
+  put<T>(url: string, body: ProductType, options: optionType): Observable<T> {
+    return this.http.put<T>(url, body, options) as Observable<T>;
+  }
+
+  // Used to make a DELETE request to the API
+  delete<T>(url: string, options: optionType): Observable<T> {
+    return this.http.delete<T>(url, options) as Observable<T>;
   }
 
 }
